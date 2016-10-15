@@ -1,0 +1,270 @@
+﻿<Application x:Class="DynamicEF.WorkflowHost.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:local="clr-namespace:DynamicEF.WorkflowHost"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <!-- アイコンリソース：Icon Resource -->
+        <BitmapImage x:Key="IcoNewFlow" UriSource="Images/L/NewDocument_32x32.png" />
+        <BitmapImage x:Key="IcoOpenFlow" UriSource="Images/L/FolderOpen_32x32_72.png" />
+        <BitmapImage x:Key="IcoSaveFlow" UriSource="Images/L/base_floppydisk_32.png" />
+
+        <BitmapImage x:Key="IcoUndo" UriSource="Images/S/112_ArrowReturnLeft_Blue_16x16_72.png" />
+        <BitmapImage x:Key="IcoRedo" UriSource="Images/S/112_ArrowReturnRight_Blue_16x16_72.png" />
+        <BitmapImage x:Key="IcoCopy" UriSource="Images/S/CopyHS.png" />
+        <BitmapImage x:Key="IcoPaste" UriSource="Images/S/PasteHS.png" />
+        <BitmapImage x:Key="IcoCut" UriSource="Images/S/CutHS.png" />
+
+        <BitmapImage x:Key="IcoPlay" UriSource="Images/Execute/play.png" />
+        <BitmapImage x:Key="IcoStop" UriSource="Images/Execute/stop.png" />
+
+        <BitmapImage x:Key="IcoAddLibrary" UriSource="Images/L/add_library.png" />
+        <BitmapImage x:Key="IcoReleaseLibrary" UriSource="Images/L/del_library.png" />
+
+        <BitmapImage x:Key="IcoViewXaml" UriSource="Images/L/xaml_file.png" />
+
+        <BitmapImage x:Key="IcoWFSequence" UriSource="Images/Workflow/NewSequence.png" />
+        <BitmapImage x:Key="IcoWFFlowchart" UriSource="Images/Workflow/NewFlowchart.png" />
+        <BitmapImage x:Key="IcoWFStatemachine" UriSource="Images/Workflow/NewStateMachine.png" />
+        <BitmapImage x:Key="IcoWFWorkflowservice" UriSource="Images/Workflow/NewWorkflowService.png" />
+
+        <BitmapImage x:Key="IcoPersistSetting" UriSource="Images/L/persist_setting.png" />
+
+        <BitmapImage x:Key="IcoZoomIn" UriSource="Images/L/ZoomIn.png" />
+        <BitmapImage x:Key="IcoZoomOut" UriSource="Images/L/ZoomOut.png" />
+
+        <!-- 文字列リソース：Caption Resource -->
+        <system:String x:Uid="TabHomeName" x:Key="TabHomeName">ホーム</system:String>
+        <system:String x:Uid="TabPersistName" x:Key="TabPersistName">永続化</system:String>
+        <system:String x:Uid="TabEtcName" x:Key="TabEtcName">設定</system:String>
+
+        <system:String x:Uid="WFSequenceName" x:Key="WFSequenceName">シーケンス</system:String>
+        <system:String x:Uid="WFFlowchartName" x:Key="WFFlowchartName">フローチャート</system:String>
+        <system:String x:Uid="WFStatemachineName" x:Key="WFStatemachineName">ステートマシン</system:String>
+        <system:String x:Uid="WFServicesName" x:Key="WFServicesName">ワークフローサービス</system:String>
+
+        <system:String x:Uid="GroupWorkflowName" x:Key="GroupWorkflowName">ワークフロー</system:String>
+        <system:String x:Uid="GroupEditName" x:Key="GroupEditName">編集</system:String>
+        <system:String x:Uid="GroupExecuteName" x:Key="GroupExecuteName">実行</system:String>
+        <system:String x:Uid="GroupLibraryName" x:Key="GroupLibraryName">外部ライブラリ</system:String>
+
+        <system:String x:Uid="MenuCreateName" x:Key="MenuCreateName">新規作成</system:String>
+        <system:String x:Uid="MenuOpenName" x:Key="MenuOpenName">開く</system:String>
+        <system:String x:Uid="MenuSaveName" x:Key="MenuSaveName">保存</system:String>
+        <system:String x:Uid="MenuExitName" x:Key="MenuExitName">終了</system:String>
+
+        <system:String x:Uid="EditUndoName" x:Key="EditUndoName">元に戻す</system:String>
+        <system:String x:Uid="EditRedoName" x:Key="EditRedoName">やり直し</system:String>
+        <system:String x:Uid="EditCopyName" x:Key="EditCopyName">コピー</system:String>
+        <system:String x:Uid="EditPasteName" x:Key="EditPasteName">貼付け</system:String>
+        <system:String x:Uid="EditCutName" x:Key="EditCutName">切り取り</system:String>
+
+        <system:String x:Uid="ExecuteRunName" x:Key="ExecuteRunName">実行</system:String>
+        <system:String x:Uid="ExecutePauseName" x:Key="ExecutePauseName">停止</system:String>
+        <system:String x:Uid="ExecuteConsoleName" x:Key="ExecuteConsoleName">コンソールで実行</system:String>
+        <system:String x:Uid="ExecutePersistName" x:Key="ExecutePersistName">永続化を利用</system:String>
+        <system:String x:Uid="ExecuteWaitName" x:Key="ExecuteWaitName">ウェイト</system:String>
+        <system:String x:Uid="ExecuteTraceName" x:Key="ExecuteTraceName">トレースを表示</system:String>
+        <system:String x:Uid="ExecuteViewXaml" x:Key="ExecuteViewXaml">XAML</system:String>
+        <system:String x:Uid="ExecuteIISExpress" x:Key="ExecuteIISExpress">IIS Express で実行</system:String>
+
+        <system:String x:Uid="LibraryAddFileName" x:Key="LibraryAddFileName">参照の追加</system:String>
+        <system:String x:Uid="LibraryReleaseFileName" x:Key="LibraryReleaseFileName">参照の解放</system:String>
+        <system:String x:Uid="LibraryBuildWorkflow" x:Key="LibraryBuildWorkflow">ワークフローのビルド</system:String>
+
+        <system:String x:Uid="GroupPersistSetting" x:Key="GroupPersistSetting">永続化先</system:String>
+        <system:String x:Uid="SetPersistSetting" x:Key="SetPersistSetting">永続化の設定</system:String>
+
+        <system:String x:Uid="GroupUISetting" x:Key="GroupUISetting">UI 設定</system:String>
+        <system:String x:Uid="FontSizeUp" x:Key="FontSizeUp">サイズ拡大</system:String>
+        <system:String x:Uid="FontSizeDown" x:Key="FontSizeDown">サイズ縮小</system:String>
+
+        <system:String x:Uid="GroupEtc" x:Key="GroupEtc">壁紙</system:String>
+
+        <system:String x:Uid="ChkUseWallpaper" x:Key="ChkUseWallpaper">壁紙を表示する</system:String>
+        <system:String x:Uid="ChkUseVoice" x:Key="ChkUseVoice">効果音を利用する</system:String>
+
+        <system:String x:Uid="TabProperty" x:Key="TabProperty">プロパティ</system:String>
+        <system:String x:Uid="TabToolbox" x:Key="TabToolbox">ツールボックス</system:String>
+        <system:String x:Uid="TabTrace" x:Key="TabTrace">トレース</system:String>
+        <system:String x:Uid="TabError" x:Key="TabError">エラー</system:String>
+
+        <system:String x:Uid="MsgComplete" x:Key="MsgComplete">ワークフローの実行が終了しました。</system:String>
+        <system:String x:Uid="MsgAbort" x:Key="MsgAbort">ワークフローの実行を中止しました。</system:String>
+        <system:String x:Uid="MsgUnhandled" x:Key="MsgUnhandled">ワークフローの実行中にエラーが発生しました。</system:String>
+        <system:String x:Uid="MsgCheckExceptionInFlow" x:Key="MsgCheckExceptionInFlow">ワークフロー中にエラーがあります。</system:String>
+        <system:String x:Uid="MsgDropItemLoad" x:Key="MsgDropItemLoad">新しくワークフローを読み込みますか？</system:String>
+        <system:String x:Uid="MsgBuildComplete" x:Key="MsgBuildComplete">ワークフローのビルドが終了しました。</system:String>
+
+        <system:String x:Uid="MsgOpenWorkflowFilter" x:Key="MsgOpenWorkflowFilter">ワークフロー(*.xaml)|*.xaml|ワークフローサービス(*.xamlx) |*.xamlx|全てのファイル(*.*)|*.*</system:String>
+        <system:String x:Uid="MsgOpenAddinFilter" x:Key="MsgOpenAddinFilter">リンクライブラリ(*.dll)|*.dll|全てのファイル(*.*)|*.*</system:String>
+        <system:String x:Uid="MsgBuildLibraryFilter" x:Key="MsgBuildLibraryFilter">リンクライブラリ(*.dll)|*.dll|全てのファイル(*.*)|*.*</system:String>
+
+        <!-- インテリセンス: Intellisense-->
+        <BitmapImage x:Key="ISClass" UriSource="Images/Intellisense/VSObject_Class.png" />
+        <BitmapImage x:Key="ISDelegate" UriSource="Images/Intellisense/VSObject_Delegate.png" />
+        <BitmapImage x:Key="ISEnum" UriSource="Images/Intellisense/VSObject_Enum.png" />
+        <BitmapImage x:Key="ISEvent" UriSource="Images/Intellisense/VSObject_Event.png" />
+        <BitmapImage x:Key="ISField" UriSource="Images/Intellisense/VSObject_Field.png" />
+        <BitmapImage x:Key="ISInterface" UriSource="Images/Intellisense/VSObject_Interface.png" />
+        <BitmapImage x:Key="ISMethod" UriSource="Images/Intellisense/VSObject_Method.png" />
+        <BitmapImage x:Key="ISNamespace" UriSource="Images/Intellisense/VSObject_Namespace.png" />
+        <BitmapImage x:Key="ISProperty" UriSource="Images/Intellisense/VSObject_Properties.png" />
+        <BitmapImage x:Key="ISStructure" UriSource="Images/Intellisense/VSObject_Structure.png" />
+
+
+        <!-- ツールボックスカテゴリ: ToolBox Category -->
+        <system:String x:Uid="CatControlFlow" x:Key="CatControlFlow">フロー制御</system:String>
+        <system:String x:Uid="CatFlowchart" x:Key="CatFlowchart">フローチャート</system:String>
+        <system:String x:Uid="CatStatemachine" x:Key="CatStatemachine">ステートマシン</system:String>
+        <system:String x:Uid="CatMessaging" x:Key="CatMessaging">メッセージング</system:String>
+        <system:String x:Uid="CatRuntime" x:Key="CatRuntime">ランタイム</system:String>
+        <system:String x:Uid="CatPrimitives" x:Key="CatPrimitives">プリミティブ</system:String>
+        <system:String x:Uid="CatTransaction" x:Key="CatTransaction">トランザクション</system:String>
+        <system:String x:Uid="CatCollection" x:Key="CatCollection">コレクション</system:String>
+        <system:String x:Uid="CatErrorhandling" x:Key="CatErrorhandling">エラー処理</system:String>
+        <system:String x:Uid="CatInterop" x:Key="CatInterop">移行</system:String>
+        <system:String x:Uid="CatAddin" x:Key="CatAddin">アドイン</system:String>
+
+        <!-- おまけ要素: Etc Graphic -->
+        <system:String x:Uid="EtcOptionPreInstall" x:Key="EtcOptionPreInstall">プリインストール</system:String>
+        <BitmapImage x:Key="Azu01" UriSource="Images/Etc/01_クラウディアSD1.jpg" />
+        <BitmapImage x:Key="Azu02" UriSource="Images/Etc/02_クラウディアSD2.jpg" />
+        <BitmapImage x:Key="Azu03" UriSource="Images/Etc/03_クラウディアSD3.jpg" />
+        <BitmapImage x:Key="Azu04" UriSource="Images/Etc/04_クラウディアSD4.jpg" />
+        <BitmapImage x:Key="Azu05" UriSource="Images/Etc/05_クラウディアデスク.jpg" />
+        <BitmapImage x:Key="Azu06" UriSource="Images/Etc/06_クラウディアななめ.jpg" />
+        <BitmapImage x:Key="Azu07" UriSource="Images/Etc/07_クラウディアななめ2.jpg" />
+        <BitmapImage x:Key="Azu08" UriSource="Images/Etc/08_クラウディアななめ3.jpg" />
+        <BitmapImage x:Key="Azu09" UriSource="Images/Etc/09_クラウディアバストトップ.jpg" />
+        <BitmapImage x:Key="Azu10" UriSource="Images/Etc/10_クラウディア横.jpg" />
+        <BitmapImage x:Key="Azu11" UriSource="Images/Etc/11_クラウディア正面1.jpg" />
+        <BitmapImage x:Key="Azu12" UriSource="Images/Etc/12_クラウディア正面2.jpg" />
+        <BitmapImage x:Key="Azu13" UriSource="Images/Etc/13_クラウディア石.jpg" />
+        <BitmapImage x:Key="Azu14" UriSource="Images/Etc/claudia_birthday2011.jpg" />
+
+        <BitmapImage x:Key="Azu97" UriSource="Images/Etc/97_analoguma1.png" />
+        <BitmapImage x:Key="Azu98" UriSource="Images/Etc/98_wmm1.png" />
+        <BitmapImage x:Key="Azu99" UriSource="Images/Etc/99_wmm2.png" />
+
+        <system:String x:Uid="Azu00Caption" x:Key="Azu00Caption">なし</system:String>
+        <system:String x:Uid="Azu01Caption" x:Key="Azu01Caption">SD1</system:String>
+        <system:String x:Uid="Azu02Caption" x:Key="Azu02Caption">SD2</system:String>
+        <system:String x:Uid="Azu03Caption" x:Key="Azu03Caption">SD3</system:String>
+        <system:String x:Uid="Azu04Caption" x:Key="Azu04Caption">SD4</system:String>
+        <system:String x:Uid="Azu05Caption" x:Key="Azu05Caption">デスク</system:String>
+        <system:String x:Uid="Azu06Caption" x:Key="Azu06Caption">ななめ1</system:String>
+        <system:String x:Uid="Azu07Caption" x:Key="Azu07Caption">ななめ2</system:String>
+        <system:String x:Uid="Azu08Caption" x:Key="Azu08Caption">ななめ3</system:String>
+        <system:String x:Uid="Azu09Caption" x:Key="Azu09Caption">バストトップ</system:String>
+        <system:String x:Uid="Azu10Caption" x:Key="Azu10Caption">横</system:String>
+        <system:String x:Uid="Azu11Caption" x:Key="Azu11Caption">正面1</system:String>
+        <system:String x:Uid="Azu12Caption" x:Key="Azu12Caption">正面2</system:String>
+        <system:String x:Uid="Azu13Caption" x:Key="Azu13Caption">石</system:String>
+        <system:String x:Uid="Azu14Caption" x:Key="Azu14Caption">誕生日</system:String>
+        <system:String x:Uid="Azu97Caption" x:Key="Azu97Caption">アナログマ</system:String>
+        <system:String x:Uid="Azu98Caption" x:Key="Azu98Caption">緑のアイツ１</system:String>
+        <system:String x:Uid="Azu99Caption" x:Key="Azu99Caption">緑のアイツ２</system:String>
+
+        <!-- アクティビティアイコン: Activity Icon Graphic -->
+        <BitmapImage x:Key="ActIcoBookmark" UriSource="Images/Activity/book_notebook.png" />
+        <BitmapImage x:Key="ActIcoReadKey" UriSource="Images/Activity/console_readkey.png" />
+        <BitmapImage x:Key="ActIcoCommentout" UriSource="Images/Activity/commentout.png" />
+        <BitmapImage x:Key="ActIcoMessageBox" UriSource="Images/Activity/messagebox.png" />
+        <BitmapImage x:Key="ActIcoZipFile" UriSource="Images/Activity/zippedfile.png" />
+
+        <!-- ダイアログタイトル: Dialog Title -->
+        <system:String x:Uid="TitlePersistSetting" x:Key="TitlePersistSetting">永続化の設定</system:String>
+        <system:String x:Uid="TitleXamlVie" x:Key="TitleXamlVie">ワークフロー XAML 表示</system:String>
+
+        <!-- 永続化用ダイアログ:Persist Setting Dialog -->
+        <system:String x:Uid="PSServerLabel" x:Key="PSServerLabel">サーバー</system:String>
+        <system:String x:Uid="PSDatabaseLabel" x:Key="PSDatabaseLabel">データベース</system:String>
+        <system:String x:Uid="PSAuthLabel" x:Key="PSAuthLabel">認証</system:String>
+        <system:String x:Uid="PSAuthWindows" x:Key="PSAuthWindows">Windows 認証</system:String>
+        <system:String x:Uid="PSAuthSQL" x:Key="PSAuthSQL">SQL 認証</system:String>
+
+        <system:String x:Uid="PSAuthAccount" x:Key="PSAuthAccount">アカウント</system:String>
+        <system:String x:Uid="PSAuthPassword" x:Key="PSAuthPassword">パスワード</system:String>
+        <system:String x:Uid="PSTestConnect" x:Key="PSTestConnect">接続テスト</system:String>
+        <system:String x:Uid="PSOk" x:Key="PSOk">OK</system:String>
+        <system:String x:Uid="PSCancel" x:Key="PSCancel">キャンセル</system:String>
+
+
+        <!-- カスタムアクティビティ : Customized Activities-->
+        <!-- ブックマークアクティビティ : BookmarkActivity-->
+        <system:String x:Uid="ActBMDisplayName" x:Key="ActBMDisplayName">ブックマーク作成</system:String>
+        <system:String x:Uid="ActBMBookmarkName" x:Key="ActBMBookmarkName">ブックマーク名</system:String>
+        <system:String x:Uid="ActBMArgumentName" x:Key="ActBMArgumentName">受取り変数</system:String>
+        <system:String x:Uid="ACtBMDoubleClick" x:Key="ACtBMDoubleClick">ダブルクリックして表示します</system:String>
+        <system:String x:Uid="ACtBMPropertyCategory" x:Key="ACtBMPropertyCategory">処理の設定</system:String>
+        <system:String x:Uid="ACtBMBookmarknameProperty" x:Key="ACtBMBookmarknameProperty">ブックマーク名</system:String>
+        <system:String x:Uid="ACtBMBookmarknameDescription" x:Key="ACtBMBookmarknameDescription">作成するブックマーク名を設定します</system:String>
+        <system:String x:Uid="ACtBMHostedvalueProperty" x:Key="ACtBMHostedvalueProperty">結果を受取る変数</system:String>
+        <system:String x:Uid="ACtBMHostedvalueDescription" x:Key="ACtBMHostedvalueDescription">ブックマークに渡された値を設定する変数を指定します</system:String>
+
+        <!-- コメントアウトアクティビティ : CommentOutActivity-->
+        <system:String x:Uid="ActCODisplayName" x:Key="ActCODisplayName">コメントアウト</system:String>
+        <system:String x:Uid="ActCODropArea" x:Key="ActCODropArea">ここにアクティビティをドロップ</system:String>
+        <system:String x:Uid="ActCODoubleClick" x:Key="ActCODoubleClick">ダブルクリックして表示します</system:String>
+        <system:String x:Uid="ActCONoNeed" x:Key="ActCONoNeed">必要がない場合はアクティビティを削除してください</system:String>
+        <system:String x:Uid="ActCONeedSequence" x:Key="ActCONeedSequence">Sequence アクティビティを必ず設置してください</system:String>
+
+        <!-- メッセージボックスアクティビティ : MessageBoxActivity-->
+        <system:String x:Uid="ActMBDisplayName" x:Key="ActMBDisplayName">メッセージボックス表示</system:String>
+        <system:String x:Uid="ActMBDialogTitle" x:Key="ActMBDialogTitle">タイトル</system:String>
+        <system:String x:Uid="ActMBDialogIcon" x:Key="ActMBDialogIcon">アイコン</system:String>
+        <system:String x:Uid="ActMBDialogButton" x:Key="ActMBDialogButton">ボタン</system:String>
+        <system:String x:Uid="ActMBDialogText" x:Key="ActMBDialogText">メッセージ</system:String>
+        <system:String x:Uid="ActMBDialogIconInformation" x:Key="ActMBDialogIconInformation">情報</system:String>
+        <system:String x:Uid="ActMBDialogIconQuestion" x:Key="ActMBDialogIconQuestion">問合せ</system:String>
+        <system:String x:Uid="ActMBDialogIconWarning" x:Key="ActMBDialogIconWarning">警告</system:String>
+        <system:String x:Uid="ActMBDialogIconError" x:Key="ActMBDialogIconError">エラー-</system:String>
+        <system:String x:Uid="ActMBDialogButtonOK" x:Key="ActMBDialogButtonOK">OK</system:String>
+        <system:String x:Uid="ActMBDialogButtonOKCancel" x:Key="ActMBDialogButtonOKCancel">OK・キャンセル</system:String>
+        <system:String x:Uid="ActMBDialogButtonYesNo" x:Key="ActMBDialogButtonYesNo">はい・いいえ</system:String>
+        <system:String x:Uid="ActMBDialogButtonYesNoCancel" x:Key="ActMBDialogButtonYesNoCancel">はい・いいえ・キャンセル</system:String>
+        <system:String x:Uid="ActMBDoubleClick" x:Key="ActMBDoubleClick">ダブルクリックして表示します</system:String>
+
+        <system:String x:Uid="ACtMBPropertyCategory" x:Key="ACtMBPropertyCategory">処理の設定</system:String>
+        <system:String x:Uid="ACtMBTitleProperty" x:Key="ACtMBTitleProperty">タイトル</system:String>
+        <system:String x:Uid="ACtMBTitleDescription" x:Key="ACtMBTitleDescription">ダイアログのタイトルを設定します。</system:String>
+        <system:String x:Uid="ACtMBIconProperty" x:Key="ACtMBIconProperty">アイコン</system:String>
+        <system:String x:Uid="ACtMBIconDescription" x:Key="ACtMBIconDescription">ダイアログで表示するアイコンを設定します。</system:String>
+        <system:String x:Uid="ACtMBButtonsProperty" x:Key="ACtMBButtonsProperty">ボタン</system:String>
+        <system:String x:Uid="ACtMBButtonsDescription" x:Key="ACtMBButtonsDescription">ダイアログで表示するボタンを設定します。</system:String>
+        <system:String x:Uid="ACtMBMessagesProperty" x:Key="ACtMBMessagesProperty">メッセージ</system:String>
+        <system:String x:Uid="ACtMBMessagesDescription" x:Key="ACtMBMessagesDescription">ダイアログで表示する文章を設定します。</system:String>
+        <system:String x:Uid="ACtMBResultsProperty" x:Key="ACtMBResultsProperty">結果を受取る変数</system:String>
+        <system:String x:Uid="ACtMBResultsDescription" x:Key="ACtMBResultsDescription">ダイアログでクリックされたボタンの値を設定する変数を指定します。</system:String>
+
+        <!-- リードキーアクティビティ : ReadKeyActivity-->
+        <system:String x:Uid="ActRKDisplayName" x:Key="ActRKDisplayName">コンソールキー入力</system:String>
+        <system:String x:Uid="ActRKArgumentName" x:Key="ActRKArgumentName">受取り変数</system:String>
+        <system:String x:Uid="ActRKDoubleClick" x:Key="ActRKDoubleClick">ダブルクリックして表示します</system:String>
+        <system:String x:Uid="ACtRKPropertyCategory" x:Key="ACtRKPropertyCategory">処理の設定</system:String>
+        <system:String x:Uid="ACtRKInputKeyProperty" x:Key="ACtRKInputKeyProperty">結果を受取る変数</system:String>
+        <system:String x:Uid="ACtRKInputKeyDescription" x:Key="ACtRKInputKeyDescription">入力されたキーを受取る変数を設定します</system:String>
+
+        <!-- Zip 圧縮アクティビティ : ZipCompressActivity-->
+        <system:String x:Uid="ActZCDisplayName" x:Key="ActZCDisplayName">Zip ファイル圧縮</system:String>
+        <system:String x:Uid="ActZCArchiveName" x:Key="ActZCArchiveName">出力先ファイル</system:String>
+        <system:String x:Uid="ActZCCompressTarget" x:Key="ActZCCompressTarget">圧縮するファイル</system:String>
+        <system:String x:Uid="ActZCDoubleClick" x:Key="ActZCDoubleClick">ダブルクリックして表示します</system:String>
+        <system:String x:Uid="ACtZCPropertyCategory" x:Key="ACtZCPropertyCategory">処理の設定</system:String>
+        <system:String x:Uid="ACtZCArchiveFileNameProperty" x:Key="ACtZCArchiveFileNameProperty">圧縮ファイル名</system:String>
+        <system:String x:Uid="ACtZCArchiveFileNameDescription" x:Key="ACtZCArchiveFileNameDescription">出力する圧縮ファイル名を設定します。</system:String>
+        <system:String x:Uid="ACtZCTargetFileNameProperty" x:Key="ACtZCTargetFileNameProperty">圧縮するファイル</system:String>
+        <system:String x:Uid="ACtZCTargetFileNameDescription" x:Key="ACtZCTargetFileNameDescription">圧縮するファイル名を設定します。</system:String>
+        <system:String x:Uid="ACtZCResultsProperty" x:Key="ACtZCResultsProperty">結果を受取る変数</system:String>
+        <system:String x:Uid="ACtZCResultsDescription" x:Key="ACtZCResultsDescription">圧縮が正しく行えたか結果を返却します。</system:String>
+
+        <!-- WPF 画像表示アクティビティ : WPFDisplayImageActivity-->
+
+        <!-- コンテキストメニュー : ContextMenu -->
+        <system:String x:Uid="CMImportWorkflow" x:Key="CMImportWorkflow">ワークフローのインポート</system:String>
+        <system:String x:Uid="CMBuildWorkflow" x:Key="CMBuildWorkflow">ワークフローのビルド</system:String>
+
+    </Application.Resources>
+</Application>

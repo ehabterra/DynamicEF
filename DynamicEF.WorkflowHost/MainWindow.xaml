@@ -1,0 +1,40 @@
+﻿<Window xmlns:my="http://schemas.microsoft.com/winfx/2006/xaml/presentation/ribbon"  x:Class="DynamicEF.WorkflowHost.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"  
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  
+        xmlns:sapt="clr-namespace:System.Activities.Presentation.Toolbox;assembly=System.Activities.Presentation"  
+        xmlns:sys="clr-namespace:System;assembly=mscorlib" 
+        Title="MainWindow" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+    <Window.Resources>
+        <sys:String x:Key="AssemblyName">System.Activities, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</sys:String>
+    </Window.Resources>
+    <Grid x:Name="grid1">
+        <Grid.RowDefinitions>
+            <RowDefinition MinHeight="50" MaxHeight="140" />
+            <RowDefinition/>
+            <RowDefinition MaxHeight="20"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <my:Ribbon Grid.Row="0" Grid.ColumnSpan="100" UseLayoutRounding="True" >
+            <my:RibbonTab Header="Home" KeyTip="H" >
+                <my:RibbonGroup x:Name="ClipboardGroup" Header="Home">
+                    <my:RibbonButton SmallImageSource="Images\Save2.png" LargeImageSource="Images\Save2.png" Label="Save" KeyTip="S" Name="btnSave"  Click="btnSave_Click"/>
+                    <my:RibbonButton SmallImageSource="Images\open2.png" LargeImageSource="Images\open2.png" Label="Open" KeyTip="O" Name="btnOpen"  Click="btnOpen_Click"/>
+                    <my:RibbonButton SmallImageSource="Images\run2.png" LargeImageSource="Images\run2.png" Label="Run" KeyTip="R"  Name="btnRun" Click="btnRun_Click"/>
+                </my:RibbonGroup>
+            </my:RibbonTab>
+        </my:Ribbon>
+        <Border Grid.Row="1"  Grid.Column="0">
+            <sapt:ToolboxControl Name="Toolbox">
+            </sapt:ToolboxControl>
+        </Border>
+        <Border Grid.Row="1" Grid.Column="1" Name="DesignerBorder"/>
+        <Border Grid.Row="1" Grid.Column="2" Name="PropertyBorder"/>
+        <StatusBar Grid.ColumnSpan="100" Grid.Column="0" Grid.Row="2">
+            <TextBlock Name="CurrentActivityName"></TextBlock>
+        </StatusBar>
+    </Grid>
+</Window>
