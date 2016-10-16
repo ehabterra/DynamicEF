@@ -47,7 +47,7 @@ namespace DynamicEF.DAL
                     #region this part for adding references to generate dll
 
                     // Current assembly if you want to comment no problem
-                    parameters.ReferencedAssemblies.Add(location);
+                    //parameters.ReferencedAssemblies.Add(location);
 
                     // To support Linq
                     parameters.ReferencedAssemblies.Add("System.Core.dll");
@@ -122,7 +122,8 @@ namespace DynamicEF.DAL
             IEnumerable<Type> types;
             Assembly asm;
 
-            asm = Assembly.LoadFrom(fileName);
+            //asm = Assembly.LoadFrom(fileName);
+            asm = AppDomain.CurrentDomain.Load(AssemblyName.GetAssemblyName(fileName));
             types = asm.ExportedTypes;
             return types;
         }

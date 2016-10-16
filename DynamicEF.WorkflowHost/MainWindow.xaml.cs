@@ -30,17 +30,17 @@ namespace DynamicEF.WorkflowHost
 
         public MainWindow()
         {
-            InitializeComponent();
-
-            // Register the metadata  
-            RegisterMetadata();
-
             //Initiate Popup
             System.Threading.Tasks.Task.Factory.StartNew(() =>
             {
                 this.CreateIntellisenseList();
                 creating = false;
             });
+
+            InitializeComponent();
+
+            // Register the metadata  
+            RegisterMetadata();
 
             AddItemsToToolbox();
 
@@ -49,11 +49,11 @@ namespace DynamicEF.WorkflowHost
         private void AddDesigner(string fileName = null)
         {
 
-            //Wait till create Intellisense List 
-            while (creating)
-            {
-                System.Threading.Thread.Sleep(1);
-            }
+            ////Wait till create Intellisense List 
+            //while (creating)
+            //{
+            //    System.Threading.Thread.Sleep(1);
+            //}
 
             //Create an instance of WorkflowDesigner class.  
             this.wd = new WorkflowDesigner();
@@ -157,23 +157,6 @@ namespace DynamicEF.WorkflowHost
 
         void AddItemsToToolbox()
         {
-            string sourceLocation = "";
-            string targetLocation = "";
-            string location = "";
-
-            ManageAssembly.GetWorkPaths(out sourceLocation, out targetLocation, out location);
-
-            ManageAssembly.CreateAssemblies();
-
-            //New table1 With {.Title = "Ehab"}
-            // Add Classes to our domain
-            var assemblyNames = ManageAssembly.GetAllDynamicAssemblyNames();
-            foreach (var item in assemblyNames)
-            {
-                var asm = Assembly.LoadFrom(item);
-            }
-            AppDomain.CurrentDomain.Load("DynamicEF.DAL");
-
             foreach (var asmembly in AppDomain.CurrentDomain.GetAssemblies())
             {
 
@@ -272,9 +255,10 @@ namespace DynamicEF.WorkflowHost
 
         private void CreateIntellisenseList()
         {
-            var wfAsm = Assembly.GetExecutingAssembly();
-            var refAsmList = (from x in wfAsm.GetReferencedAssemblies() select Assembly.Load(x)).ToList();
-            var typeList = refAsmList.SelectMany(a => (from x in a.GetTypes() where x.IsPublic && x.IsVisible && ((x.Namespace != null) && (!x.Namespace.Contains("DynamicEF"))) select x)).ToList();
+            GetDynamicEFAssemblies();
+
+            var refAsmList = (from x in AppDomain.CurrentDomain.GetAssemblies() select x).ToList();
+            var typeList = refAsmList.SelectMany(a => (from x in a.GetTypes() where x.IsPublic && x.IsVisible && (x.Namespace != null) select x)).ToList();
             _inttelisenseList.Nodes.Clear();
             foreach (var childAsm in typeList)
             {
@@ -284,6 +268,26 @@ namespace DynamicEF.WorkflowHost
             this.AddNode(_inttelisenseList, "New", false);
 
             this.SortNodes(_inttelisenseList);
+        }
+
+        private static void GetDynamicEFAssemblies()
+        {
+            string sourceLocation = "";
+            string targetLocation = "";
+            string location = "";
+
+            ManageAssembly.GetWorkPaths(out sourceLocation, out targetLocation, out location);
+
+            ManageAssembly.CreateAssemblies();
+
+            //New table1 With {.Title = "Ehab"}
+            // Add Classes to our domain
+            var assemblyNames = ManageAssembly.GetAllDynamicAssemblyNames();
+            foreach (var item in assemblyNames)
+            {
+                //var asm = Assembly.LoadFrom(item);
+                AppDomain.CurrentDomain.Load(AssemblyName.GetAssemblyName(item));
+            }
         }
 
         #region " Create Intellisense Node Data"
