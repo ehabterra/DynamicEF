@@ -1,0 +1,61 @@
+﻿<Sequence mc:Ignorable="sap sap2010 sads" sap2010:WorkflowViewState.IdRef="Sequence_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:dd="clr-namespace:DynamicEF.DAL;assembly=table1"
+ xmlns:dd1="clr-namespace:DynamicEF.DAL;assembly=DynamicEF.DAL"
+ xmlns:dwa="clr-namespace:DynamicEF.WorkflowHost.Activities;assembly=DynamicEF.WorkflowHost"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.Namespaces>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>DynamicEF.DAL</x:String>
+      <x:String>System.Data.Entity.Infrastructure</x:String>
+      <x:String>System.Data.Entity</x:String>
+      <x:String>System</x:String>
+    </sco:Collection>
+  </TextExpression.Namespaces>
+  <TextExpression.References>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>DynamicEF.DAL</AssemblyReference>
+      <AssemblyReference>table1</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.References>
+  <dwa:UpdateDatabase sap2010:WorkflowViewState.IdRef="UpdateDatabase_1" />
+  <Sequence DisplayName="Context Sequence">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="dd1:DBContext" Default="[new dynamicef.dal.dbcontext()]" Name="context" />
+    </Sequence.Variables>
+    <dwa:AddData x:TypeArguments="dd:table1" DbContext="[context]" sap2010:WorkflowViewState.IdRef="AddData`1_1" data="[New table1 With {.Title = &quot;Ehab&quot;}]" />
+    <dwa:SaveData DbContext="[context]" sap2010:WorkflowViewState.IdRef="SaveData_1" />
+    <sap2010:WorkflowViewState.IdRef>Sequence_2</sap2010:WorkflowViewState.IdRef>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="UpdateDatabase_1" sap:VirtualizedContainerService.HintSize="222,22" />
+      <sap2010:ViewStateData Id="AddData`1_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="SaveData_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="222,208">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="244,394">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+  <sads:DebugSymbol.Symbol>dypEOlx0ZXN0UHJvamVjdHNcd29ya2Zsb3cgZmlsZXNcdGFibGUxLnhhbWwJAQE9DAEBHgMeTAELHwMmDgECITkhWgEDIwUjqQEBByQFJFgBBCM4I0MBCSN3I6YBAQgkHSQoAQU=</sads:DebugSymbol.Symbol>
+</Sequence>

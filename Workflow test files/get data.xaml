@@ -1,0 +1,80 @@
+﻿<Sequence mc:Ignorable="sap sap2010 sads" sap2010:WorkflowViewState.IdRef="Sequence_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:dd="clr-namespace:DynamicEF.DAL;assembly=table1"
+ xmlns:dd1="clr-namespace:DynamicEF.DAL;assembly=DynamicEF.DAL"
+ xmlns:dwa="clr-namespace:DynamicEF.WorkflowHost.Activities;assembly=DynamicEF.WorkflowHost"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.Namespaces>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>DynamicEF.DAL</x:String>
+      <x:String>System.Data.Entity.Infrastructure</x:String>
+      <x:String>System.Data.Entity</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.Namespaces>
+  <TextExpression.References>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>DynamicEF.DAL</AssemblyReference>
+      <AssemblyReference>table1</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>EntityFramework</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.References>
+  <Sequence.Variables>
+    <Variable x:TypeArguments="dd1:DBContext" Default="[new dynamicef.dal.dbcontext()]" Name="context" />
+    <Variable x:TypeArguments="dd:table1[]" Name="lst" />
+  </Sequence.Variables>
+  <dwa:GetData x:TypeArguments="dd:table1, dd:table1[]" filter="{x:Null}" DbContext="[context]" sap2010:WorkflowViewState.IdRef="GetData`2_2" data="[lst]" />
+  <DoWhile sap2010:WorkflowViewState.IdRef="DoWhile_1">
+    <DoWhile.Variables>
+      <Variable x:TypeArguments="x:Int32" Name="x" />
+    </DoWhile.Variables>
+    <DoWhile.Condition>[x &lt; lst.length]</DoWhile.Condition>
+    <Sequence sap2010:WorkflowViewState.IdRef="Sequence_2">
+      <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[x+1 &amp; &quot;- &quot; &amp; lst(x).title]" />
+      <Assign sap2010:WorkflowViewState.IdRef="Assign_1">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:Int32">[x]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:Int32">[x+1]</InArgument>
+        </Assign.Value>
+      </Assign>
+    </Sequence>
+  </DoWhile>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="GetData`2_2" sap:VirtualizedContainerService.HintSize="464,22" />
+      <sap2010:ViewStateData Id="WriteLine_1" sap:VirtualizedContainerService.HintSize="242,61" />
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="264,285">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="DoWhile_1" sap:VirtualizedContainerService.HintSize="464,447" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="486,633">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+  <sads:DebugSymbol.Symbol>dyNDOlxVc2Vyc1xlaGFiXERlc2t0b3BcZ2V0IGRhdGEueGFtbA0BAVAMAQEkNyRYAQInAyeeAQESKAM4DQEDJ1UnYAEVJ5QBJ5sBARMsGCwrAQ8tBTcQAQQuBy53AQovBzYQAQUuRS50AQs0MTQ2AQgxMjE1AQY=</sads:DebugSymbol.Symbol>
+</Sequence>
