@@ -23,4 +23,4 @@ public class table1
 After that place it in the classes directory and it will generate the dll (assembly) and update the database, so you can use it to insert, update, delete and select from it.
 
 Next you'll see how to do that in few steps with code examples.
-[How it works](How-it-works)
+[How it works](How-it-works.md)

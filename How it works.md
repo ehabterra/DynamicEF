@@ -78,4 +78,4 @@ dynamic data = context.Invoke_Generic("FirstOrDefault", table1, data_Queryable);
 var title = data.Title;
 }}
 You can also check this by running function "TestGetDataFromDB".
-next [Conclusion](Conclusion)
+next [Conclusion](Conclusion.md)
