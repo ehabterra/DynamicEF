@@ -3,7 +3,7 @@ Dynamic Entity Framework to allow changing the context and database tables at ru
 
 This project is an example about how to "create code first entity framework" that supports adding/editing automatically types at run-time and update database.
 
-_[Documentation](Documentation)_
+_[Documentation](Documentation.md)_
 
 **+Used Tools/Libraries:+**
 * Visual Studio 2015
