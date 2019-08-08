@@ -38,7 +38,7 @@ DBContext.ApplyDatabaseMigrations();
 
 * If everything is Okay we will see that the database is created and have two tables "__MigrationHistory" used by Entity Framework for updates and "table1" that is generated for us will look like:
 
-![](How it works_generated_table.png)
+![How it works](How-it-works_generated_table.png)
 
 * Now we can make transaction on "table1" for example insert a row with Title = "test1":
 {{
